@@ -24,3 +24,12 @@ body {
 		#6b6b6b
 	);
 }
+
+body h1 {
+	font-size: 2.7em;
+	color: #fff;
+}
+
+body button {
+	font-size: 14;
+}
