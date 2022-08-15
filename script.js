@@ -1,4 +1,5 @@
 document.getElementById("skipBtn").hidden = true;
+document.getElementById("endLbl").hidden = true;
 
 class Song {
     constructor(title, url, length) {
@@ -55,6 +56,10 @@ function SkipSong() {
                 break;
             }
         }
+    }
+    else if (songList.length == generatedNumbers.length) {
+        document.getElementById("endLbl").hidden = false;
+        document.getElementById("skipBtn").hidden = true;
     }
 }
 
