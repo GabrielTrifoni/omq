@@ -51,8 +51,8 @@ function SkipSong() {
 
             if (bool == false) {
                 generatedNumbers.push(n);
-                sample = Math.trunc(Math.random() * songList[n].length);
-                document.getElementById("showvideo").src = (songList[n].url + "&t=" + sample); // (+ "&t=" + sample) doesnt work with youtube's embed  
+                sample = Math.trunc(Math.random() * (songList[n].length-30));
+                document.getElementById("showvideo").src = (songList[n].url + "&start=" + sample + "&disablekb=1");
                 break;
             }
         }
@@ -62,5 +62,3 @@ function SkipSong() {
         document.getElementById("skipBtn").hidden = true;
     }
 }
-
-
