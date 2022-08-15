@@ -12,17 +12,23 @@
 </head>
 
 <body>
-    <header class="cabeca">
-        <h1>osu! Music Quiz</h1>
-    </header>
-    <hr>
-    <body>
-        <iframe src="https://www.youtube.com/embed/y2A3hLMWk6M?rel=0&autoplay=1" width="683" height="384"
-            title="XI - Blue Zenith" frameborder="0" allowfullscreen></iframe>
-        </iframe>
-    </body>
+    <div id="project">
+        <header class="cabeca">
+            <h1>osu! Music Quiz</h1>
+        </header>
 
-    <script src="./script.js"></script>
+        <br><br>
+
+        <body>
+            <button id="startBtn" onclick="StartGame()">Start</button>
+            <br>
+            <iframe id="showvideo" src="" title="" width="683" height="384" frameborder="0" allowfullscreen></iframe>
+            <br>
+            <button id="skipBtn" onclick="SkipSong()">Skip</button>
+        </body>
+
+        <script src="./script.js"></script>
+    </div>
 </body>
 
 </html>
