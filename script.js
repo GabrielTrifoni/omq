@@ -25,40 +25,38 @@ songList.push(new Song("Yorushika - Hachigatsu, Bou, Tsukiakari", "https://www.y
 songList.push(new Song("Nanahira - Kizuitara Shunkashuutou", "https://www.youtube.com/embed/XRAOSO5m-cY", "295"));
 songList.push(new Song("linear ring - enchanted love", "https://www.youtube.com/embed/qE6mruRB1PA", "130"));
 
-function StartGame() {
-    SkipSong();
-    document.getElementById("startBtn").hidden = true;
-    document.getElementById("skipBtn").hidden = false;
+var index;
+var sample;
+var auxUrl;
 
+function PlayNewSong(index) {
+    sample = GenerateRandomNumber((songList[index].length - 30));
+    auxUrl = songList[index].url + "?rel=0&autoplay=1&disablekb=1&start=" + sample;
+    document.getElementById("showvideo").src = auxUrl;
 }
 
-var bool;
-var n;
-var sample;
+function GenerateRandomNumber(size) {
+    return Math.trunc(Math.random() * size);
+}
+
+function StartGame() {
+    index = GenerateRandomNumber(songList.length);
+
+    PlayNewSong(index);
+    document.getElementById("startBtn").hidden = true;
+    document.getElementById("skipBtn").hidden = false;
+}
 
 function SkipSong() {
-    if (songList.length > generatedNumbers.length) { // checks if there are songs, if false shows message and hide button
-        while (true) {
-            n = Math.trunc(Math.random() * songList.length);
-            bool = false;
+    index = GenerateRandomNumber(songList.length);
 
-            for (const numbers of generatedNumbers) { // checks if the generated random number already appeared (avoids repeated songs but is not efficient)
-                if (n == numbers) {
-                    bool = true;
-                    break;
-                }
-            }
-
-            if (bool == false) {
-                generatedNumbers.push(n);
-                sample = Math.trunc(Math.random() * (songList[n].length-30));
-                document.getElementById("showvideo").src = (songList[n].url + "?rel=0&autoplay=1&start=" + sample + "&disablekb=1");
-                break;
-            }
-        }
-    }
-    else if (songList.length == generatedNumbers.length) {
+    if (songList.length == 0) {
         document.getElementById("endLbl").hidden = false;
         document.getElementById("skipBtn").hidden = true;
     }
+    else {
+        PlayNewSong(index);
+        songList.splice(index, 1);
+    }
 }
+
