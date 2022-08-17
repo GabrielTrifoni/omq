@@ -29,7 +29,8 @@ var index;
 var sample;
 var auxUrl;
 
-function PlayNewSong(index) {
+function PlayNewSong() {
+    index = GenerateRandomNumber(songList.length);
     sample = GenerateRandomNumber((songList[index].length - 30));
     auxUrl = songList[index].url + "?rel=0&autoplay=1&disablekb=1&start=" + sample;
     document.getElementById("showvideo").src = auxUrl;
@@ -41,22 +42,18 @@ function GenerateRandomNumber(size) {
 }
 
 function StartGame() {
-    index = GenerateRandomNumber(songList.length);
-
-    PlayNewSong(index);
+    PlayNewSong();
     document.getElementById("startBtn").hidden = true;
     document.getElementById("skipBtn").hidden = false;
 }
 
 function SkipSong() {
-    index = GenerateRandomNumber(songList.length);
-
     if (songList.length == 0) {
         document.getElementById("endLbl").hidden = false;
         document.getElementById("skipBtn").hidden = true;
     }
     else {
-        PlayNewSong(index);
+        PlayNewSong();
     }
 }
 
