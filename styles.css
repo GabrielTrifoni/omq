@@ -12,25 +12,51 @@ header {
 
 header h1 {
 	font-size: 2.7em;
-	color: #fff;
+	color: rgb(255, 255, 255);
+
 }
 
 body {
 	justify-content: center;
 	text-align: center;
 	align-items: center;
-	background-image: linear-gradient(
-		to left,
-		#242424,
-		#6b6b6b
-	);
+	background-image: url(img/bg.png);
+	background-size: cover;
 }
 
 body h1 {
 	font-size: 2.7em;
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 body button {
-	font-size: 14;
+	align-items: center;
+	vertical-align: middle;
+	justify-content: center;
+	text-align: center;
+	color: #ffffff;
+	background-color: #ad0da5;
+	border: 0;
+	border-radius: 100px;
+	box-sizing: border-box;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 20px;
+	max-width: 480px;
+	min-height: 40px;
+	min-width: 0px;
+	padding: 0px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+body button:hover {
+	background-color: #681155;
+	color: #ffffff;
+}
+
+body button:active {
+	background: #5a0340;
+	color: rgb(255, 255, 255, .7);
 }

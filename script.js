@@ -20,35 +20,38 @@ songList.push(new Song("Pastel * Palletes - Baby Sweet Berry Love", "https://www
 songList.push(new Song("Yorushika - Hachigatsu, Bou, Tsukiakari", "https://www.youtube.com/embed/J6eih31MaQ8", "278"));
 songList.push(new Song("Nanahira - Kizuitara Shunkashuutou", "https://www.youtube.com/embed/XRAOSO5m-cY", "295"));
 songList.push(new Song("linear ring - enchanted love", "https://www.youtube.com/embed/qE6mruRB1PA", "130"));
+songList.push(new Song("Set It Off - Horrible Kids", "https://www.youtube.com/embed/UlECVY129fY", "183"));
 
+var songListTotalLength = songList.length;
 var index;
 var sample;
 
-function GenerateRandomNumber(size) {
-    return Math.trunc(Math.random() * size);
+function RandomNumber(maxValue) {
+    return Math.trunc(Math.random() * maxValue);
 }
 
 function FormatURL(url) {
-    sample = GenerateRandomNumber((songList[index].length - 30));
+    sample = RandomNumber((songList[index].length - 30));
     return url + "?rel=0&autoplay=1&disablekb=1&start=" + sample;
 }
 
 function PlayNewSong() {
-    index = GenerateRandomNumber(songList.length);
+    index = RandomNumber(songList.length);
     document.getElementById("showvideo").src = FormatURL(songList[index].url);
     songList.splice(index, 1);
 }
 
-function StartGame() {
-    PlayNewSong();
-    document.getElementById("startBtn").hidden = true;
-    document.getElementById("skipBtn").hidden = false;
-}
-
 function SkipSong() {
-    if (songList.length == 0) {
+    if (songList.length == 0) { // if songList is empty
         document.getElementById("endLbl").hidden = false;
         document.getElementById("skipBtn").hidden = true;
+    }
+    else if (songList.length == songListTotalLength) { // if it's playing the first song
+        PlayNewSong();
+        document.getElementById("startBtn").hidden = true;
+        document.getElementById("skipBtn").hidden = false;
+        document.getElementById("showvideo").width = 683;
+        document.getElementById("showvideo").height = 384;
     }
     else {
         PlayNewSong();
