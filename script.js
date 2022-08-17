@@ -1,6 +1,3 @@
-document.getElementById("skipBtn").hidden = true;
-document.getElementById("endLbl").hidden = true;
-
 class Song {
     constructor(title, url, length) {
         this.title = title;
