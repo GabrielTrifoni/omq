@@ -26,16 +26,20 @@ var index;
 var sample;
 var auxUrl;
 
-function PlayNewSong() {
-    index = GenerateRandomNumber(songList.length);
-    sample = GenerateRandomNumber((songList[index].length - 30));
-    auxUrl = songList[index].url + "?rel=0&autoplay=1&disablekb=1&start=" + sample;
-    document.getElementById("showvideo").src = auxUrl;
-    songList.splice(index, 1);
-}
-
 function GenerateRandomNumber(size) {
     return Math.trunc(Math.random() * size);
+}
+
+function FormatURL(url) {
+    sample = GenerateRandomNumber((songList[index].length - 30));
+    return url + "?rel=0&autoplay=1&disablekb=1&start=" + sample;
+}
+
+function PlayNewSong() {
+    index = GenerateRandomNumber(songList.length);
+    auxUrl = FormatURL(songList[index].url);
+    document.getElementById("showvideo").src = auxUrl;
+    songList.splice(index, 1);
 }
 
 function StartGame() {
@@ -53,4 +57,3 @@ function SkipSong() {
         PlayNewSong();
     }
 }
-
