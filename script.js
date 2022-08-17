@@ -7,7 +7,6 @@ class Song {
 }
 
 var songList = [];
-var generatedNumbers = [];
 
 songList.push(new Song("xi - Blue Zenith", "https://www.youtube.com/embed/y2A3hLMWk6M", "256"));
 songList.push(new Song("RUMI - Densetsu no Matsuri", "https://www.youtube.com/embed/gBotPWBG5gw", "169"));
