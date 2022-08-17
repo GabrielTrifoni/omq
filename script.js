@@ -24,7 +24,6 @@ songList.push(new Song("linear ring - enchanted love", "https://www.youtube.com/
 
 var index;
 var sample;
-var auxUrl;
 
 function GenerateRandomNumber(size) {
     return Math.trunc(Math.random() * size);
@@ -37,8 +36,7 @@ function FormatURL(url) {
 
 function PlayNewSong() {
     index = GenerateRandomNumber(songList.length);
-    auxUrl = FormatURL(songList[index].url);
-    document.getElementById("showvideo").src = auxUrl;
+    document.getElementById("showvideo").src = FormatURL(songList[index].url);
     songList.splice(index, 1);
 }
 
