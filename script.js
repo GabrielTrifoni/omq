@@ -33,6 +33,7 @@ function PlayNewSong(index) {
     sample = GenerateRandomNumber((songList[index].length - 30));
     auxUrl = songList[index].url + "?rel=0&autoplay=1&disablekb=1&start=" + sample;
     document.getElementById("showvideo").src = auxUrl;
+    songList.splice(index, 1);
 }
 
 function GenerateRandomNumber(size) {
@@ -56,7 +57,6 @@ function SkipSong() {
     }
     else {
         PlayNewSong(index);
-        songList.splice(index, 1);
     }
 }
 
