@@ -32,6 +32,7 @@ function RandomNumber(maxValue) {
 
 function FormatURL(url) {
     sample = RandomNumber((songList[index].length - 30));
+    if (sample < 0) sample = 0;
     return url + "?rel=0&autoplay=1&disablekb=1&start=" + sample;
 }
 

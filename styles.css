@@ -5,7 +5,7 @@
 }
 
 header {
-	background-color: rgb(46, 46, 46);
+	background: linear-gradient(to bottom, #3c001e, #5a001e);
 	justify-content: center;
 	text-align: center;
 }
@@ -13,7 +13,6 @@ header {
 header h1 {
 	font-size: 2.7em;
 	color: rgb(255, 255, 255);
-
 }
 
 body {
@@ -22,14 +21,15 @@ body {
 	align-items: center;
 	background-image: url(img/bg.png);
 	background-size: cover;
+
 }
 
-body h1 {
+main h1 {
 	font-size: 2.7em;
 	color: rgb(255, 255, 255);
 }
 
-body button {
+main button {
 	align-items: center;
 	vertical-align: middle;
 	justify-content: center;
