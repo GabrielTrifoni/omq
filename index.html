@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>osu! Music Quiz</title>
-    
-    <script src="./songs.json"></script>
+
+    <script src="./data/songs.json"></script>
     <script src="./script.js" defer></script>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css'>
     <link rel="stylesheet" href="./styles.css">
@@ -17,20 +17,26 @@
 </head>
 
 <body>
-    <header>
-        <h1>osu! Music Quiz</h1>
-    </header>
+<header>
+    <h1>osu! Music Quiz</h1>
+</header>
 
-    <main>
-        <br><br>
-        <button class="btn" id="startBtn" onclick="SkipSong()">Start</button>
-        <br>
-        <iframe id="showvideo" src="" title="" width="" height="" frameborder="0" allow="autoplay"
-            allowfullscreen></iframe>
-        <br>
-        <button class="btn" id="skipBtn" hidden="true" onclick="SkipSong()">Skip</button>
-        <h1 id="endLbl" hidden="true">No more songs available</h1>
-    </main>
+<main>
+    <br><br>
+    <label class="label" id="score" hidden="true">Score: 0/0</label>
+    <br>
+    <button class="btn" id="startBtn" onclick="Start()">Start</button>
+
+    <br>
+    <iframe id="showvideo" src="" title="" width="" height="" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+    <br>
+
+    <input id="guessInput" list="songs-datalist" hidden="true">
+    <datalist id="songs-datalist">
+    </datalist>
+    <button class="btn" id="guessBtn" hidden="true" onclick="Guess()">Guess</button>
+    <h1 id="endLbl" hidden="true">No more songs available</h1>
+</main>
 </body>
 
 </html>

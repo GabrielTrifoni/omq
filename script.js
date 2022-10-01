@@ -4,9 +4,18 @@ request.send(null)
 var songsRequest = JSON.parse(request.responseText);
 
 var songList = songsRequest.Songs;
-var songListTotalLength = songList.length;
+var dataList = document.getElementById('songs-datalist');
+
+songList.forEach(function (song) {
+    var option = document.createElement('option');
+    option.value = (song.artist + " - " + song.title);
+    dataList.appendChild(option);
+});
+
 var index;
 var sample;
+var score;
+var totalSongsPlayed;
 
 function RandomNumber(maxValue) {
     return Math.trunc(Math.random() * maxValue);
@@ -21,22 +30,38 @@ function FormatURL(url) {
 function PlayNewSong() {
     index = RandomNumber(songList.length);
     document.getElementById("showvideo").src = FormatURL(songList[index].videoID);
-    songList.splice(index, 1);
 }
 
-function SkipSong() {
-    if (songList.length === 0) { // if songList is empty
+function Start() {
+    PlayNewSong();
+    score = 0;
+    totalSongsPlayed = 0;
+    document.getElementById("guessInput").hidden = false;
+    document.getElementById("startBtn").hidden = true;
+    document.getElementById("guessBtn").hidden = false;
+    document.getElementById("score").hidden = false;
+    document.getElementById("showvideo").width = 683;
+    document.getElementById("showvideo").height = 384;
+}
+
+function Guess() {
+    let currentSong = (songList[index].artist + " - " + songList[index].title);
+
+    if (songList.length === 1) { // if songList is empty
         document.getElementById("endLbl").hidden = false;
-        document.getElementById("skipBtn").hidden = true;
     }
-    else if (songList.length === songListTotalLength) { // if it's playing the first song
-        PlayNewSong();
-        document.getElementById("startBtn").hidden = true;
-        document.getElementById("skipBtn").hidden = false;
-        document.getElementById("showvideo").width = 683;
-        document.getElementById("showvideo").height = 384;
+
+    if (document.getElementById("guessInput").value.length === 0) { // No guess
+        alert("No song selected");
+    } else if (document.getElementById("guessInput").value === currentSong) { // Right guess
+        score++;
+    } else { // Wrong guess
+        alert("Wrong guess");
     }
-    else {
-        PlayNewSong();
-    }
+
+    totalSongsPlayed++;
+    document.getElementById("score").innerHTML = 'Score: ' + score + '/' + totalSongsPlayed;
+    document.getElementById("guessInput").value = "";
+    songList.splice(index, 1);
+    PlayNewSong();
 }
